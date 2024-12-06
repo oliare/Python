@@ -4,7 +4,7 @@ coord = (1, 10)
 # coord[0] += 1
 
 # ------ list: dynamic size, can modify
-colors = ["red", "green", "blue"]
+colors = ["red", "green", "blue", 'dark', "darkcyan"]
 
 for c in colors:
     print(c)
@@ -30,6 +30,9 @@ print(f"Deep: {deepList}")
 colors.pop(3)   # remove fourth
 colors.pop()    # remove last
 colors.pop(-1)  # remove last
+
+darks = list(filter(lambda x: 'dark' in x, colors))
+print(darks)
 
 if "black" in colors:
     colors.remove("black")
