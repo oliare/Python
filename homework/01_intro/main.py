@@ -24,7 +24,13 @@ print(cars, "\n")
 # task 4
 tuple = (5, 48, 665, 54, 12, 7, 6514)
 sortedTuple = sorted(tuple)  
+number = {}
 
 for i in sortedTuple:
     count = len(str(i))
     print(f'{i} - has {count} digit(s)')
+    if count in number: number[count] += 1 
+    else: number[count] = 1 
+
+for i, count in number.items():
+    print(f'{i} occurs: {count} times')
