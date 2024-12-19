@@ -1,0 +1,20 @@
+{% extends "_layout.html" %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+    <body class="bg-light" style="height: 100vh;">
+        <div class="d-flex align-items-center justify-content-center" style="height: 80vh;">
+            <div class="text-center">
+                <h1 class="display-1 fw-bold">404</h1>
+                <p class="fs-3"> <span class="text-danger">Oops!</span> Data not found...</p>
+                <p class="lead">
+                    The item you're looking for doesn't exist.
+                </p>
+                <a href="/cars/list" class="btn btn-dark">Go Home</a>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    </body>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "_layout.html" %}
+
+{% block header %}Cars{% endblock %}
+
+{% block content %}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Model</th>
+            <th scope="col">Year</th>
+            <th scope="col">Price</th>
+            <th scope="col">Color</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for car in cars %}
+        <tr>
+            <th scope="row">{{car.id}}</th>
+            <td>{{car.brand}}</td>
+            <td>{{car.model}}</td>
+            <td>{{car.year}}</td>
+            <td>{{car.price}}</td>
+            <td>{{car.color}}</td>
+            <td>
+                <div class="btn-group" role="group">
+                    <a href="/cars/details/{{ car.id }}" class="btn btn-outline-primary">
+                        <i class="bi bi-eye"></i>
+                    </a>
+                    <a href="/cars/delete/{{ car.id }}" class="btn btn-outline-danger">
+                        <i class="bi bi-trash3"></i>
+                    </a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

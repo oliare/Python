@@ -1,12 +1,7 @@
-# from djangoproject.users import admin
-from django.urls import path
+from django.contrib import admin
 from django.urls import include, path
 
-from users import views
-
 urlpatterns = [
-    # path("admin/", admin.site.urls),
-    path("", views.home),
-    path("about/", views.about),
-    path("users/", include("users.urls")),
+    path("admin/", admin.site.urls),
+    path("cars/", include("cars.urls")),
 ]

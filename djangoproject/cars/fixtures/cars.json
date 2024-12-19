@@ -1,0 +1,57 @@
+[
+    {
+        "pk": 1,
+        "model": "cars.car",
+        "fields": {
+            "brand": "Toyota",
+            "model": "Supra",
+            "year": 2020,
+            "price": 65000.00,
+            "color": "Black"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "cars.car",
+        "fields": {
+            "brand": "Ford",
+            "model": "Mustang GT",
+            "year": 2021,
+            "price": 55000.00,
+            "color": "Red"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "cars.car",
+        "fields": {
+            "brand": "Lexus",
+            "model": "LFA",
+            "year": 2020,
+            "price": 200000.00,
+            "color": "White"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "cars.car",
+        "fields": {
+            "brand": "Audi",
+            "model": "RS Q8",
+            "year": 2019,
+            "price": 25000.00,
+            "color": "Red"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "cars.car",
+        "fields": {
+            "brand": "Mercedes",
+            "model": "AMG GT",
+            "year": 2022,
+            "price": 45000.00,
+            "color": "Silver"
+        }
+    }
+]
