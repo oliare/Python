@@ -1,0 +1,32 @@
+{% extends "list.html" %}
+
+{% block header %}Edit Car{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <div class="my-4">
+        <label class="form-label">Brand</label>
+        <input value="{{ form.brand.value }}" type="text" name="brand" class="form-control" placeholder="Enter brand">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Model</label>
+        <input value="{{ form.model.value }}" type="text" name="model" class="form-control" placeholder="Enter model">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Year</label>
+        <input value="{{ form.year.value}}" type="text" name="year" class="form-control" placeholder="Enter year">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Price</label>
+        <input value="{{ form.price.value }}" type="text" name="price" class="form-control" placeholder="Enter price">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Color</label>
+        <input value="{{ form.color.value }}" type="text" name="color" class="form-control" placeholder="Enter color">
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Edit</button>
+    </div>
+</form>
+{% endblock %}

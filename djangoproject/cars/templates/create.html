@@ -1,0 +1,37 @@
+{% extends "list.html" %}
+
+{% block header %}Create New Car{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+
+    <div class="my-4">
+        <label class="form-label">Brand</label>
+        <input type="text" name="brand" class="form-control" placeholder="Enter brand">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Model</label>
+        <input type="text" name="model" class="form-control"
+            placeholder="Enter model">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Year</label>
+        <input type="number" name="year" class="form-control"
+            placeholder="Enter year">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Price</label>
+        <input type="text" name="price" class="form-control"
+            placeholder="Enter price">
+    </div>
+    <div class="mb-3">  
+        <label class="form-label">Color</label>
+        <input type="text" name="color" class="form-control"
+            placeholder="Enter color">
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+</form>
+{% endblock %}
