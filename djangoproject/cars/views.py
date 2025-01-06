@@ -8,6 +8,10 @@ def list(request):
     cars = Car.objects.all()
     return render(request, "list.html", {"cars": cars})
 
+def catalog(request):
+    cars = Car.objects.all()
+    return render(request, "catalog.html", {"cars": cars})
+
 def create(request):
     form = CreateCar()
 
@@ -18,7 +22,7 @@ def create(request):
             form.save()
             return redirect("/cars")
 
-    return render(request, "create.html", {"form": form})
+    return render(request, "create.html", {"form": form, "return_url": "/"})
 
 
 def edit(request, id):
@@ -34,13 +38,13 @@ def edit(request, id):
             form.save()
             return redirect("/cars")
 
-    return render(request, "edit.html", {"form": form})
+    return render(request, "edit.html", {"form": form, "return_url": "/"})
 
 def details(request, id):
     try: car = Car.objects.get(id=id)
     except Car.DoesNotExist:
         return render(request, "error_404.html")
-    return render(request, "details.html", {"car": car})
+    return render(request, "details.html", {"car": car, "return_url": "/"})
 
 def delete(request, id):
     try: car = Car.objects.get(id=id)
