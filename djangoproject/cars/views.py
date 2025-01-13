@@ -4,6 +4,8 @@ from cars.models import Car
 from cars.forms.create import CreateCar
 from cars.forms.edit import EditCar
 from django.conf import settings
+from django.forms import model_to_dict
+
 
 def list(request):
     cars = Car.objects.all()
@@ -23,7 +25,9 @@ def create(request):
             form.save()
             return redirect("/")
 
-    return render(request, "create.html", {"form": form, "return_url": "/"})
+    print(Car.CATEGORY_CHOICES)
+
+    return render(request, "create.html", {"form": form, "return_url": "/", "category": Car.CATEGORY_CHOICES})
 
 
 def edit(request, id):
@@ -45,8 +49,12 @@ def details(request, id):
     try: car = Car.objects.get(id=id)
     except Car.DoesNotExist:
         return render(request, "error_404.html")
-    return render(request, "details.html", {"car": car, "return_url": "/"})
-
+    return render(request, "details.html", {
+        "car": {
+            **model_to_dict(car),
+            "category": Car.CATEGORY_CHOICES[car.category][1]
+        }, 
+        "return_url": "/"})
 
 def delete(request, id):
     try:

@@ -6,36 +6,52 @@
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
 
-    <div class="my-4">
+    <div class="mb-3">
         <label class="form-label">Brand</label>
         <input type="text" name="brand" class="form-control" placeholder="Enter brand">
     </div>
     <div class="mb-3">
         <label class="form-label">Model</label>
-        <input type="text" name="model" class="form-control"
-            placeholder="Enter model">
+        <input type="text" name="model" class="form-control" placeholder="Enter model">
     </div>
-    <div class="mb-3">
-        <label class="form-label">Year</label>
-        <input type="number" name="year" class="form-control"
-            placeholder="Enter year">
+    <div class="row">
+        <div class="col">
+            <div class="mb-3">
+                <label class="form-label">Year</label>
+                <input type="number" name="year" class="form-control" placeholder="Enter year">
+            </div>
+        </div>
+        <div class="col">
+            <div class="mb-3">
+                <label class="form-label">Price</label>
+                <input type="text" name="price" class="form-control" placeholder="Enter price">
+            </div>
+        </div>
+        <div class="col">
+            <div class="mb-3">
+                <label class="form-label">Color</label>
+                <input type="text" name="color" class="form-control" placeholder="Enter color">
+            </div>
+        </div>
     </div>
-    <div class="mb-3">
-        <label class="form-label">Price</label>
-        <input type="text" name="price" class="form-control"
-            placeholder="Enter price">
+
+    <div class="row">
+        <div class="col">
+            <div class="mb-3">
+                <label class="form-label">{{form.category.label}}</label>
+                {{form.category}}
+            </div>
+        </div>
+        <div class="col">
+            <div class="mb-3">
+                <label class="form-label">Photo</label>
+                <input type="file" name="photo" class="form-control">
+            </div>
+        </div>
     </div>
-    <div class="mb-3">  
-        <label class="form-label">Color</label>
-        <input type="text" name="color" class="form-control"
-            placeholder="Enter color">
-    </div>
-    <div class="my-4">
-        <label class="form-label">Photo</label>
-        <input type="file" name="photo" class="form-control">
-    </div>
-    <div>
-        <button type="submit" class="btn btn-primary">Create</button>
+
+    <div class="text-center mt-4">
+        <button type="submit" class="btn btn-secondary">Create</button>
     </div>
 </form>
 {% endblock %}

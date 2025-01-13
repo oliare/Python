@@ -1,18 +1,40 @@
 {% extends "list.html" %}
 
 {% block content %}
-<h2 class="mt-3">About: {{ car.brand }} {{ car.model }} ({{ car.year }})</h2>
-
-<div>
-    <br>
-    <p><strong>Brand:</strong> {{ car.brand }}</p>
-    <p><strong>Model:</strong> {{ car.model }}</p>
-    <p><strong>Year:</strong> {{ car.year }}</p>
-    <p><strong>Price:</strong> {{ car.price }}$</p>
-    <p><strong>Color:</strong> {{ car.color }}</p>
-    <p>
-        <strong>Photo:</strong>
-    <img src="{{ car.photo.url }}" alt="{{ car.brand }}" style="max-width: 100%; height: auto;"></p>
-
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-header text-muted text-center">
+            <h2 class="my-3">Details for: {{ car.brand }} {{ car.model }} ({{ car.year }})</h2>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="{{ car.photo.url }}" alt="{{ car.brand }}" class="img-fluid rounded shadow-sm">
+                </div>
+                <div class="col-md-8">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <strong>Brand:</strong> {{ car.brand }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Model:</strong> {{ car.model }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Year:</strong> {{ car.year }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Price:</strong> {{ car.price }}$
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Color:</strong> {{ car.color }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Category:</strong> {{ car.category }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
