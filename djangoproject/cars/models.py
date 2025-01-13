@@ -6,7 +6,7 @@ class Car(models.Model):
     year = models.IntegerField()
     price = models.DecimalField(max_digits=15, decimal_places=2)
     color = models.CharField(max_length=100)
-    photo = models.ImageField(blank=True)
+    photo = models.ImageField(blank=True, upload_to='cars/')
 
     def __str__(self):
         return f"{self.brand} {self.model} ({self.year})"

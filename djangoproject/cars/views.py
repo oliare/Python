@@ -1,8 +1,9 @@
-from django.http import HttpResponse
+import os
 from django.shortcuts import redirect, render
 from cars.models import Car
 from cars.forms.create import CreateCar
 from cars.forms.edit import EditCar
+from django.conf import settings
 
 def list(request):
     cars = Car.objects.all()
@@ -16,11 +17,11 @@ def create(request):
     form = CreateCar()
 
     if request.method == "POST":
-        form = CreateCar(request.POST)
+        form = CreateCar(request.POST, request.FILES)
 
         if form.is_valid():
             form.save()
-            return redirect("/cars")
+            return redirect("/")
 
     return render(request, "create.html", {"form": form, "return_url": "/"})
 
@@ -46,9 +47,17 @@ def details(request, id):
         return render(request, "error_404.html")
     return render(request, "details.html", {"car": car, "return_url": "/"})
 
+
 def delete(request, id):
-    try: car = Car.objects.get(id=id)
+    try:
+        car = Car.objects.get(id=id)
     except Car.DoesNotExist:
         return render(request, "error_404.html")
-    car.delete()
-    return redirect("/cars/list") 
+    
+    if car.photo:  
+        path = os.path.join(settings.MEDIA_ROOT, car.photo.name)  # Use MEDIA_ROOT for file path
+        if os.path.exists(path):
+            os.remove(path)
+
+    car.delete() 
+    return redirect("/cars/")

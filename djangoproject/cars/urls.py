@@ -4,7 +4,6 @@ from cars import views
 
 urlpatterns = [
     path('', views.list),
-    path('list/', views.list),
     path('create/', views.create),
     path('catalog/', views.catalog),
     path('edit/<int:id>/', views.edit),
