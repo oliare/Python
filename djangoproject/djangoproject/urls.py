@@ -7,6 +7,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("cars.urls")),
     path("cars/", include("cars.urls")),
+    path("cart/", include("cart.urls")),
 ]
 
 if settings.DEBUG:  # Only serve media files in development

@@ -5,6 +5,7 @@ from cars.forms.create import CreateCar
 from cars.forms.edit import EditCar
 from django.conf import settings
 from django.forms import model_to_dict
+from django.contrib import messages
 
 
 def list(request):
@@ -23,8 +24,11 @@ def create(request):
 
         if form.is_valid():
             form.save()
+            messages.success(request, "Car created successfully!")  
             return redirect("/")
-
+        else:
+            messages.error(request, "Invalid data!")
+    
     print(Car.CATEGORY_CHOICES)
 
     return render(request, "create.html", {"form": form, "return_url": "/", "category": Car.CATEGORY_CHOICES})
@@ -41,7 +45,10 @@ def edit(request, id):
 
         if form.is_valid():
             form.save()
+            messages.success(request, "Car details updated successfully!") 
             return redirect("/cars")
+        else:
+            messages.error(request, "Invalid data!")
 
     return render(request, "edit.html", {"form": form, "return_url": "/"})
 
@@ -62,10 +69,15 @@ def delete(request, id):
     except Car.DoesNotExist:
         return render(request, "error_404.html")
     
-    if car.photo:  
-        path = os.path.join(settings.MEDIA_ROOT, car.photo.name)  # Use MEDIA_ROOT for file path
-        if os.path.exists(path):
-            os.remove(path)
+    try:
+        if car.photo:  
+            path = os.path.join(settings.MEDIA_ROOT, car.photo.name)
+            if os.path.exists(path):
+                os.remove(path)
 
-    car.delete() 
+        car.delete() 
+        messages.success(request, "Car deleted successfully!") 
+    except Exception:
+        messages.error(request, f"Error deleting car")
+
     return redirect("/cars/")
