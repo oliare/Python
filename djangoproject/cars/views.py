@@ -41,7 +41,12 @@ def edit(request, id):
 
     form = EditCar(instance=car)
     if request.method == "POST":
-        form = CreateCar(request.POST, instance=car)
+        form = EditCar(request.POST, instance=car)
+
+        if 'photo' in request.FILES: 
+            if car.photo: 
+                car.photo.delete()
+            car.photo = request.FILES['photo']  
 
         if form.is_valid():
             form.save()
